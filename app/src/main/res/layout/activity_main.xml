@@ -74,6 +74,14 @@
             app:strokeColor="@color/red_primary"
             app:cornerRadius="12dp"/>
 
+        <com.google.android.material.switchmaterial.SwitchMaterial
+            android:id="@+id/switchTema"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Dark Mode "
+            android:textColor="@color/gray_text"
+            android:layout_marginTop="16dp"/>
+
         <TextView
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
