@@ -1,0 +1,22 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="app_name">COMPUTARIA Chamados</string>
+    <string name="tela_inicial">COMPUTARIA</string>
+    <string name="sistema_chamados">Sistema de Chamados</string>
+    <string name="btn_novo_chamado">ABRIR NOVO CHAMADO</string>
+    <string name="btn_lista_chamados">TODOS OS CHAMADOS</string>
+    <string name="btn_filtros">CHAMADOS COM FILTROS</string>
+    <string name="cadastro_chamado">Cadastrar Chamado</string>
+    <string name="lista_chamados">Chamados</string>
+    <string name="atendimento">Atendimento</string>
+    <string name="filtros">Filtrar Chamados</string>
+    <string name="salvar">SALVAR CHAMADO</string>
+    <string name="salvar_atendimento">SALVAR ATENDIMENTO</string>
+    <string name="aplicar_filtros">APLICAR FILTROS</string>
+    <string name="limpar_filtros">LIMPAR</string>
+    <string name="status_aberto">Aberto</string>
+    <string name="status_em_atendimento">Em Atendimento</string>
+    <string name="status_concluido">Concluído</string>
+    <string name="nenhum_chamado">Nenhum chamado encontrado.</string>
+    <string name="versao">v1.0.0</string>
+</resources>
