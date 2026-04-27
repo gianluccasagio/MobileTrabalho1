@@ -7,6 +7,9 @@ import android.widget.TextView;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
+import android.view.Menu;
+import android.view.MenuItem;
+import androidx.appcompat.widget.SearchView;
 import com.example.trabalhopratico1.adapter.ChamadoAdapter;
 import com.example.trabalhopratico1.database.ChamadoDAO;
 import com.example.trabalhopratico1.model.Chamado;
@@ -76,4 +79,65 @@ public class ListaChamadosActivity extends AppCompatActivity {
 
     @Override
     public boolean onSupportNavigateUp() { finish(); return true; }
+
+    @Override
+    public boolean onCreateOptionsMenu(Menu menu) {
+        getMenuInflater().inflate(R.menu.menu_pesquisa, menu);
+
+        MenuItem searchItem = menu.findItem(R.id.action_search);
+        SearchView searchView = (SearchView) searchItem.getActionView();
+
+        searchView.setQueryHint("Buscar por nº ou título...");
+
+        searchView.setOnQueryTextListener(new SearchView.OnQueryTextListener() {
+            @Override
+            public boolean onQueryTextSubmit(String query) {
+                pesquisarLista(query);
+                return false;
+            }
+
+            @Override
+            public boolean onQueryTextChange(String newText) {
+                pesquisarLista(newText);
+                return false;
+            }
+        });
+
+        searchItem.setOnActionExpandListener(new MenuItem.OnActionExpandListener() {
+            @Override
+            public boolean onMenuItemActionExpand(MenuItem item) { return true; }
+
+            @Override
+            public boolean onMenuItemActionCollapse(MenuItem item) {
+                carregarLista();
+                return true;
+            }
+        });
+
+        return true;
+    }
+
+    private void pesquisarLista(String termo) {
+        List<Chamado> resultados;
+        if (termo == null || termo.trim().isEmpty()) {
+            resultados = dao.listarTodos();
+        } else {
+            resultados = dao.buscarPorTermo(termo);
+        }
+
+        if (resultados.isEmpty()) {
+            recyclerView.setVisibility(View.GONE);
+            tvVazio.setVisibility(View.VISIBLE);
+            tvVazio.setText("Nenhum chamado encontrado para: " + termo);
+            tvContador.setText("0 chamados");
+        } else {
+            recyclerView.setVisibility(View.VISIBLE);
+            tvVazio.setVisibility(View.GONE);
+            tvContador.setText(resultados.size() + " chamado(s)");
+
+            if (adapter != null) {
+                adapter.atualizarLista(resultados);
+            }
+        }
+    }
 }

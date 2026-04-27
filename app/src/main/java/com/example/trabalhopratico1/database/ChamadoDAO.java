@@ -117,6 +117,28 @@ public class ChamadoDAO {
         return c;
     }
 
+    public List<Chamado> buscarPorTermo(String termo) {
+        SQLiteDatabase db = helper.getReadableDatabase();
+        List<Chamado> lista = new ArrayList<>();
+
+        // Pesquisa no Título OU no ID
+        String wClause = DatabaseHelper.COL_TITULO + " LIKE ? OR " + DatabaseHelper.COL_ID + " LIKE ?";
+        String padrao = "%" + termo + "%";
+        String[] wArgs = new String[]{padrao, padrao};
+
+        Cursor cursor = db.query(DatabaseHelper.TABLE, null,
+                wClause, wArgs, null, null,
+                DatabaseHelper.COL_ID + " DESC");
+
+        if (cursor.moveToFirst()) {
+            do { lista.add(fromCursor(cursor)); }
+            while (cursor.moveToNext());
+        }
+        cursor.close();
+        db.close();
+        return lista;
+    }
+
     private Chamado fromCursor(Cursor cursor) {
         Chamado c = new Chamado();
         c.setId(cursor.getInt(cursor.getColumnIndexOrThrow(DatabaseHelper.COL_ID)));
