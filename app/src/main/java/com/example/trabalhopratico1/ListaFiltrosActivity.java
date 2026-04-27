@@ -27,7 +27,6 @@ public class ListaFiltrosActivity extends AppCompatActivity {
     private ChamadoAdapter adapter;
     private ChamadoDAO dao;
 
-    // Apenas as strings ISO que o banco realmente usa
     private String dataInicioISO = "";
     private String dataFimISO    = "";
 
@@ -59,7 +58,6 @@ public class ListaFiltrosActivity extends AppCompatActivity {
         spAdapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
         spinnerFiltroStatus.setAdapter(spAdapter);
 
-        // DatePicker — Data Início (variáveis locais, sem campos de classe)
         etDataInicio.setOnClickListener(v -> {
             Calendar cal = Calendar.getInstance();
             new DatePickerDialog(this, (view, y, m, d) -> {
@@ -70,7 +68,6 @@ public class ListaFiltrosActivity extends AppCompatActivity {
                     cal.get(Calendar.DAY_OF_MONTH)).show();
         });
 
-        // DatePicker — Data Fim
         etDataFim.setOnClickListener(v -> {
             Calendar cal = Calendar.getInstance();
             new DatePickerDialog(this, (view, y, m, d) -> {

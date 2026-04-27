@@ -6,36 +6,34 @@
     android:layout_height="match_parent"
     android:fitsSystemWindows="true">
 
-    <LinearLayout
+    <RelativeLayout
         android:layout_width="match_parent"
-        android:layout_height="match_parent"
-        android:orientation="vertical">
+        android:layout_height="match_parent">
 
-        <!-- Contador de chamados -->
         <TextView
             android:id="@+id/tvContador"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
+            android:layout_alignParentTop="true"
             android:padding="12dp"
             android:paddingStart="20dp"
             android:text="0 chamados"
             android:textSize="13sp"
             android:textColor="@color/gray_text"/>
 
-        <!-- Lista -->
         <androidx.recyclerview.widget.RecyclerView
             android:id="@+id/recyclerView"
             android:layout_width="match_parent"
-            android:layout_height="0dp"
-            android:layout_weight="1"
+            android:layout_height="match_parent"
+            android:layout_below="@id/tvContador"
             android:paddingBottom="80dp"
             android:clipToPadding="false"/>
 
-        <!-- Estado vazio -->
         <TextView
             android:id="@+id/tvVazio"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
+            android:layout_centerInParent="true"
             android:gravity="center"
             android:padding="32dp"
             android:text="@string/nenhum_chamado"
@@ -43,19 +41,17 @@
             android:textColor="@color/gray_text"
             android:visibility="gone"/>
 
-    </LinearLayout>
+    </RelativeLayout>
 
-    <!-- FAB para novo chamado -->
     <com.google.android.material.floatingactionbutton.FloatingActionButton
         android:id="@+id/fabNovo"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_margin="16dp"
+        android:layout_gravity="bottom|end"
+        android:layout_margin="24dp"
         android:contentDescription="Novo Chamado"
         android:src="@android:drawable/ic_input_add"
         app:backgroundTint="@color/red_primary"
-        app:tint="@color/white"
-        app:layout_anchor="@id/recyclerView"
-        app:layout_anchorGravity="bottom|end"/>
+        app:tint="@color/white"/>
 
 </androidx.coordinatorlayout.widget.CoordinatorLayout>

@@ -3,11 +3,7 @@ package com.example.trabalhopratico1;
 import android.content.Intent;
 import android.os.Bundle;
 
-import androidx.activity.EdgeToEdge;
 import androidx.appcompat.app.AppCompatActivity;
-import androidx.core.graphics.Insets;
-import androidx.core.view.ViewCompat;
-import androidx.core.view.WindowInsetsCompat;
 import android.content.SharedPreferences;
 import androidx.appcompat.app.AppCompatDelegate;
 import android.content.res.Configuration;
@@ -41,17 +37,13 @@ public class MainActivity extends AppCompatActivity {
         switchTema.setOnCheckedChangeListener((buttonView, isChecked) -> {
             int novoTema;
             if (isChecked) {
-                // Se a pessoa ligou o switch -> Tema Escuro
                 novoTema = AppCompatDelegate.MODE_NIGHT_YES;
             } else {
-                // Se a pessoa desligou o switch -> Tema Claro
                 novoTema = AppCompatDelegate.MODE_NIGHT_NO;
             }
 
-            // Salva a escolha
             prefs.edit().putInt("tema_escolhido", novoTema).apply();
 
-            // Aplica a mudança de tema
             AppCompatDelegate.setDefaultNightMode(novoTema);
         });
 

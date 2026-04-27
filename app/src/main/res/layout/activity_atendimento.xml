@@ -11,7 +11,6 @@
         android:orientation="vertical"
         android:padding="16dp">
 
-        <!-- Card de detalhes -->
         <com.google.android.material.card.MaterialCardView
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
@@ -25,7 +24,6 @@
                 android:orientation="vertical"
                 android:padding="16dp">
 
-                <!-- Número e status -->
                 <LinearLayout
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
@@ -58,7 +56,6 @@
                         android:paddingBottom="5dp"/>
                 </LinearLayout>
 
-                <!-- Título -->
                 <TextView
                     android:id="@+id/tvDetalheTitulo"
                     android:layout_width="match_parent"
@@ -68,7 +65,6 @@
                     android:textStyle="bold"
                     android:layout_marginBottom="12dp"/>
 
-                <!-- Linha: data e tipo -->
                 <LinearLayout
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
@@ -99,7 +95,6 @@
                         android:paddingBottom="5dp"/>
                 </LinearLayout>
 
-                <!-- Local -->
                 <TextView
                     android:id="@+id/tvDetalheLocal"
                     android:layout_width="match_parent"
@@ -109,14 +104,12 @@
                     android:textColor="@color/gray_text"
                     android:layout_marginBottom="12dp"/>
 
-                <!-- Separador -->
                 <View
                     android:layout_width="match_parent"
                     android:layout_height="1dp"
                     android:background="@color/gray_divider"
                     android:layout_marginBottom="12dp"/>
 
-                <!-- Descrição -->
                 <TextView
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
@@ -136,7 +129,6 @@
             </LinearLayout>
         </com.google.android.material.card.MaterialCardView>
 
-        <!-- Card de atendimento -->
         <com.google.android.material.card.MaterialCardView
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
@@ -159,7 +151,6 @@
                     android:textColor="@color/red_primary"
                     android:layout_marginBottom="12dp"/>
 
-                <!-- Alterar Status -->
                 <TextView
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
@@ -175,7 +166,6 @@
                     android:background="@drawable/bg_badge"
                     android:layout_marginBottom="16dp"/>
 
-                <!-- Solução -->
                 <com.google.android.material.textfield.TextInputLayout
                     style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
                     android:layout_width="match_parent"
@@ -195,7 +185,6 @@
             </LinearLayout>
         </com.google.android.material.card.MaterialCardView>
 
-        <!-- Botão Salvar -->
         <com.google.android.material.button.MaterialButton
             android:id="@+id/btnSalvarAtendimento"
             android:layout_width="match_parent"

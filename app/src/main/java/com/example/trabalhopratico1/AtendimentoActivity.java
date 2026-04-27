@@ -135,16 +135,14 @@ public class AtendimentoActivity extends AppCompatActivity {
     }
     @Override
     public boolean onOptionsItemSelected(MenuItem item) {
-        // Se ele clicou na Lixeira
         if (item.getItemId() == R.id.action_excluir) {
             new AlertDialog.Builder(this)
                     .setTitle("Excluir Chamado")
                     .setMessage("Tem certeza que deseja excluir este chamado permanentemente?")
                     .setPositiveButton("Sim", (dialog, which) -> {
-                        // Deleta do banco
                         if (dao.excluir(chamado.getId())) {
                             Toast.makeText(this, "Chamado excluído!", Toast.LENGTH_SHORT).show();
-                            finish(); // Fecha a tela e volta pra lista
+                            finish();
                         } else {
                             Toast.makeText(this, "Erro ao excluir.", Toast.LENGTH_SHORT).show();
                         }

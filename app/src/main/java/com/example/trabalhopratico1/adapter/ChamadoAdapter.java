@@ -49,12 +49,10 @@ public class ChamadoAdapter extends RecyclerView.Adapter<ChamadoAdapter.ViewHold
         h.tvTipo.setText(c.getTipo());
         h.tvStatus.setText(c.getStatus());
 
-        // Cor do tipo
         int corTipo = "TI".equals(c.getTipo())
                 ? R.color.tipo_ti : R.color.tipo_infra;
         aplicarCorBadge(h.tvTipo, corTipo);
 
-        // Cor do status
         int corStatus;
         switch (c.getStatus()) {
             case "Em Atendimento": corStatus = R.color.status_em_atendimento; break;
@@ -86,7 +84,6 @@ public class ChamadoAdapter extends RecyclerView.Adapter<ChamadoAdapter.ViewHold
     }
 
     public static String formatarData(String data) {
-        // Armazenado como yyyy-MM-dd, exibir como dd/MM/yyyy
         if (data == null || data.length() != 10) return data != null ? data : "";
         try {
             String[] p = data.split("-");

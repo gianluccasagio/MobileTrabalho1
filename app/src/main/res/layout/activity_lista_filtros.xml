@@ -6,7 +6,6 @@
     android:orientation="vertical"
     android:fitsSystemWindows="true">
 
-    <!-- Painel de filtros -->
     <com.google.android.material.card.MaterialCardView
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
@@ -29,7 +28,6 @@
                 android:textColor="@color/red_primary"
                 android:layout_marginBottom="12dp"/>
 
-            <!-- Filtro por Status -->
             <TextView
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
@@ -44,7 +42,6 @@
                 android:layout_height="48dp"
                 android:layout_marginBottom="12dp"/>
 
-            <!-- Filtro por Data Início -->
             <com.google.android.material.textfield.TextInputLayout
                 style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
                 android:layout_width="match_parent"
@@ -62,7 +59,6 @@
                     android:cursorVisible="false"/>
             </com.google.android.material.textfield.TextInputLayout>
 
-            <!-- Filtro por Data Fim -->
             <com.google.android.material.textfield.TextInputLayout
                 style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
                 android:layout_width="match_parent"
@@ -80,7 +76,6 @@
                     android:cursorVisible="false"/>
             </com.google.android.material.textfield.TextInputLayout>
 
-            <!-- Botões -->
             <LinearLayout
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
@@ -112,7 +107,6 @@
         </LinearLayout>
     </com.google.android.material.card.MaterialCardView>
 
-    <!-- Contador de resultados -->
     <TextView
         android:id="@+id/tvResultados"
         android:layout_width="match_parent"
@@ -123,7 +117,6 @@
         android:textSize="13sp"
         android:textColor="@color/gray_text"/>
 
-    <!-- Lista filtrada -->
     <androidx.recyclerview.widget.RecyclerView
         android:id="@+id/recyclerFiltros"
         android:layout_width="match_parent"
@@ -132,7 +125,6 @@
         android:paddingBottom="16dp"
         android:clipToPadding="false"/>
 
-    <!-- Estado vazio -->
     <TextView
         android:id="@+id/tvVazioFiltros"
         android:layout_width="match_parent"
