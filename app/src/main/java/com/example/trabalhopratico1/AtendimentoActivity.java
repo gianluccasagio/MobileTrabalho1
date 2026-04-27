@@ -9,6 +9,9 @@ import android.widget.Toast;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.core.content.ContextCompat;
 import androidx.core.graphics.drawable.DrawableCompat;
+import android.view.Menu;
+import android.view.MenuItem;
+import android.app.AlertDialog;
 import com.example.trabalhopratico1.adapter.ChamadoAdapter;
 import com.example.trabalhopratico1.database.ChamadoDAO;
 import com.example.trabalhopratico1.model.Chamado;
@@ -68,13 +71,11 @@ public class AtendimentoActivity extends AppCompatActivity {
                 .setText(chamado.getDescricao() != null && !chamado.getDescricao().isEmpty()
                         ? chamado.getDescricao() : "Sem descrição");
 
-        // Tipo badge
         TextView tvTipo = findViewById(R.id.tvDetalheTipo);
         tvTipo.setText(chamado.getTipo());
         int corTipo = "TI".equals(chamado.getTipo()) ? R.color.tipo_ti : R.color.tipo_infra;
         aplicarCorBadge(tvTipo, corTipo);
 
-        // Status badge
         TextView tvStatus = findViewById(R.id.tvDetalheStatus);
         tvStatus.setText(chamado.getStatus());
         aplicarCorBadge(tvStatus, getCorStatus(chamado.getStatus()));
@@ -87,7 +88,6 @@ public class AtendimentoActivity extends AppCompatActivity {
         adapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
         spinnerStatus.setAdapter(adapter);
 
-        // Pré-seleciona o status atual
         int idx = statusList.indexOf(chamado.getStatus());
         if (idx >= 0) spinnerStatus.setSelection(idx);
     }
@@ -128,4 +128,31 @@ public class AtendimentoActivity extends AppCompatActivity {
 
     @Override
     public boolean onSupportNavigateUp() { finish(); return true; }
+    @Override
+    public boolean onCreateOptionsMenu(Menu menu) {
+        getMenuInflater().inflate(R.menu.menu_atendimento, menu);
+        return true;
+    }
+    @Override
+    public boolean onOptionsItemSelected(MenuItem item) {
+        // Se ele clicou na Lixeira
+        if (item.getItemId() == R.id.action_excluir) {
+            new AlertDialog.Builder(this)
+                    .setTitle("Excluir Chamado")
+                    .setMessage("Tem certeza que deseja excluir este chamado permanentemente?")
+                    .setPositiveButton("Sim", (dialog, which) -> {
+                        // Deleta do banco
+                        if (dao.excluir(chamado.getId())) {
+                            Toast.makeText(this, "Chamado excluído!", Toast.LENGTH_SHORT).show();
+                            finish(); // Fecha a tela e volta pra lista
+                        } else {
+                            Toast.makeText(this, "Erro ao excluir.", Toast.LENGTH_SHORT).show();
+                        }
+                    })
+                    .setNegativeButton("Não", null)
+                    .show();
+            return true;
+        }
+        return super.onOptionsItemSelected(item);
+    }
 }

@@ -43,6 +43,15 @@ public class ChamadoDAO {
         return rows;
     }
 
+    public boolean excluir(int id) {
+        SQLiteDatabase db = helper.getWritableDatabase();
+        int rows = db.delete(DatabaseHelper.TABLE,
+                DatabaseHelper.COL_ID + " = ?",
+                new String[]{String.valueOf(id)});
+        db.close();
+        return rows > 0;
+    }
+
     public List<Chamado> listarTodos() {
         SQLiteDatabase db = helper.getReadableDatabase();
         List<Chamado> lista = new ArrayList<>();
